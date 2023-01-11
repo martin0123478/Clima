@@ -31,7 +31,7 @@ function consultarAPI(ciudad,pais){
     https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appID}
     
     `
-
+    spinner()
     fetch(url)
         .then(respuesta => respuesta.json())
         .then(datos => {
@@ -122,4 +122,23 @@ function limpiarhtml(){
     while(resultado.firstChild){
         resultado.removeChild(resultado.firstChild)
     }
+}
+
+function spinner(){
+    const divSpinner = document.createElement('div')
+    divSpinner.classList.add('sk-fading-circle')
+
+    divSpinner.innerHTML = `
+  
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+ 
+
+    `
+
+    resultado.appendChild(divSpinner)
 }
